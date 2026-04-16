@@ -111,7 +111,7 @@ function playSound(type) {
 }
 
 // --- Connect to Server ---
-// v2.3: Render deployment URL
+// v2.4: Render deployment URL
 const socket = io(); // local server — change to Render URL for deployment
 
 // --- SETUP ---
