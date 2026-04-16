@@ -1,0 +1,266 @@
+/* EchoHunt v2.4 - online.css */
+/* MERGED: v2.2 base + v2.3 battle log styles + selected button glow */
+
+/* ── Body & Typography ── */
+body {
+    background-color: #1a1a1d;
+    color: #c5c6c7;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #66fcf1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* ── Game message ── */
+#game-message {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    min-height: 28px;
+    transition: color 0.3s;
+}
+
+/* ── Layout ── */
+.game-area {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 30px;
+}
+
+.grid-container {
+    background-color: #2c2f33;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Game Board ── */
+.board {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    grid-template-rows: repeat(5, 60px);
+    border: 2px solid #66fcf1;
+    gap: 2px;
+    background-color: #4b5258;
+}
+
+/* ── Cells ── */
+.cell {
+    width: 60px;
+    height: 60px;
+    background-color: #3b3e42;
+    border: 1px solid #2c2f33;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.cell:hover {
+    background-color: #4f5357;
+    border: 1px solid #66fcf1;
+}
+
+/* ── Ship colors ── */
+#primary-board .cell.ship-1 {
+    background-color: #66fcf1 !important;
+}
+
+#primary-board .cell.ship-2 {
+    background-color: #ff4d4d !important;
+}
+
+/* ── Result markers ── */
+.cell.miss {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.cell.echo {
+    background-color: rgba(255, 223, 0, 0.6);
+}
+
+.cell.hit {
+    background-color: rgba(255, 0, 0, 0.8);
+}
+
+/* ── Action Controls ── */
+#action-controls {
+    margin: 20px 0;
+}
+
+#action-controls button {
+    background-color: #66fcf1;
+    color: #1a1a1d;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#action-controls button:hover {
+    transform: scale(1.05);
+}
+
+/* v2.3: glowing selected button */
+#action-controls button.selected {
+    background-color: #ffffff;
+    box-shadow: 0 0 12px #66fcf1, 0 0 24px #66fcf188;
+    transform: scale(1.08);
+}
+
+#btn-play-again {
+    background-color: #f7b500 !important;
+}
+
+/* ── Utility ── */
+.hidden {
+    display: none;
+}
+
+/* ── Board titles ── */
+.board-title {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.subtitle {
+    display: block;
+    font-size: 14px;
+    color: #f7b500;
+    margin-bottom: 5px;
+}
+
+.red-text {
+    color: #ff4d4d;
+}
+
+/* ── Erase button ── */
+#btn-erase {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #f7b500;
+    color: #1a1a1d;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+#btn-erase:hover {
+    transform: scale(1.05);
+}
+
+/* ── Tactical Canvas ── */
+/* Canvas sits behind cells (z-index 1) but draws circles visible through
+   semi-transparent cell backgrounds. pointer-events:none so clicks reach cells. */
+#tactical-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Cells sit above canvas so clicks work, but use position:relative
+   so offsetLeft/offsetTop are correct for circle centering.
+   BUG FIX: background transparent so canvas circles show through underneath. */
+#tracking-board .cell {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(59, 62, 66, 0.5) !important;
+}
+
+/* ── v2.4: Battle Log panel ── */
+/* FIX: fixed height shows ~2 log lines at a time.
+   Panel itself scrolls — header is sticky at top.
+   Latest entry always scrolled into view at bottom. */
+.log-panel {
+    width: 340px;
+    height: 100px;
+    overflow-y: auto;
+    background-color: #22252a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    margin: 20px auto;
+    text-align: left;
+    scroll-behavior: smooth;
+}
+
+/* Sticky header stays visible while log entries scroll */
+.log-panel h3 {
+    position: sticky;
+    top: 0;
+    background-color: #22252a;
+    z-index: 1;
+    margin: 0 0 8px 0;
+    padding-bottom: 6px;
+}
+
+.log-panel h3 {
+    color: #66fcf1;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* F1 FIX: Player label badge next to "BATTLE LOG" */
+.log-player-label {
+    background-color: #66fcf1;
+    color: #1a1a1d;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+.log-entry {
+    margin-bottom: 5px;
+    padding: 2px 0;
+    color: #c5c6c7;
+}
+
+.log-hit {
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.log-close {
+    color: #f7b500;
+}
+
+.log-miss {
+    color: #888;
+}
+
+.log-move {
+    color: #66ccff;
+}

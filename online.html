@@ -1,0 +1,56 @@
+<!-- EchoHunt v2.4 -->
+<!-- MERGED: v2.2 structure + v2.3 battle log panel -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EchoHunt v2.4</title>
+    <link rel="stylesheet" href="online.css">
+</head>
+<body>
+
+    <!-- v2.4: Battle Log panel with player label -->
+    <div id="battle-log" class="log-panel">
+        <h3>Battle Log <span id="log-player-label" class="log-player-label"></span></h3>
+        <div id="log-entries"></div>
+    </div>
+
+    <h1>ECHO HUNT (ONLINE)</h1>
+    <div id="game-message">Connecting...</div>
+
+    <div id="action-controls">
+        <button id="btn-move" style="display: none;">CHOOSE MOVE</button>
+        <button id="btn-hit" style="display: none;">CHOOSE HIT</button>
+        <button id="btn-play-again" style="display: none;">PLAY AGAIN</button>
+    </div>
+
+    <main class="game-area">
+
+        <!-- Action Board (left) — your ship -->
+        <div class="grid-container">
+            <h2 class="board-title">
+                YOUR PRIMARY BOARD (YOUR SHIP)
+                <span class="subtitle">ACTION BOARD</span>
+            </h2>
+            <div class="board" id="primary-board"></div>
+        </div>
+
+        <!-- Tactical Board (right) — your guesses + drawing canvas -->
+        <div class="grid-container">
+            <h2 class="board-title">
+                <span class="subtitle red-text">FOR YOUR TACTICS</span>
+                YOUR TRACKING BOARD (YOUR GUESSES)
+                <button id="btn-erase">ERASE</button>
+            </h2>
+            <div class="board" id="tracking-board">
+                <canvas id="tactical-canvas"></canvas>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+    <script src="online.js"></script>
+</body>
+</html>

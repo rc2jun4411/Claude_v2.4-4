@@ -1,0 +1,13 @@
+2026-04-02 pm, JK
+EchoHunt v2.4, Sounds Feeling reports;
+
+Sounds:                              Feeling:
+⚓ Anchor click when placing ship   rang, better to louder, acceptable
+🚢 Engine hum when moving           no sound *
+🔔 Sonar ping on ECHO               rang, once when hit, again when turn over, acceptable
+💧 Splash on MISS                   no sound ** 
+💥 Explosion on Direct Hit          rang, not sound like an explosion, acceptable
+🏆 Victory fanfare for the winner   rang, acceptable
+
+Notes:
+  *, ** : change sound source to mp3 instead.
