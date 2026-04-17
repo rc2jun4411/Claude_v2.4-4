@@ -112,7 +112,7 @@ function playSound(type) {
 
 // --- Connect to Server ---
 // v2.4: Render deployment URL
-const socket = io(); // local server — change to Render URL for deployment
+const socket = io('https://your-render-app-name.onrender.com'); // local server — change to Render URL for deployment
 
 // --- SETUP ---
 document.addEventListener('DOMContentLoaded', () => {
