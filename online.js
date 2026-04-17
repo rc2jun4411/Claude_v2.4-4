@@ -112,7 +112,8 @@ function playSound(type) {
 
 // --- Connect to Server ---
 // v2.4: Render deployment URL
-const socket = io('https://your-render-app-name.onrender.com'); // local server — change to Render URL for deployment
+//const socket = io('https://your-render-app-name.onrender.com'); // local server — change to Render URL for 1st deploy.
+const socket = io('https://claude-v2-4-4.onrender.com'); // to gloval server
 
 // --- SETUP ---
 document.addEventListener('DOMContentLoaded', () => {
