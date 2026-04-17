@@ -1,0 +1,7 @@
+at terminal 
+    >cd "C:\Users\rc2ju\OneDrive\デスクトップ\Claude-20260324\Claude_v2.4-4"
+    >python server.py
+at browser, Chrome or Edge url: localhost:10000/online.html
+    connect player 1.
+    connect player 2.
+player 1, set ship then player 2, set ship. Start game:

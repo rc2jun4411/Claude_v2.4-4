@@ -1,0 +1,8 @@
+Memo ToDo: 2026-04-17
+
+1. GitHub v2.4.
+2. Deploy v2.4 onto Render. 
+3. online.js, change line 115 to:
+   const socket = io(); // local server — change to Render URL for deployment    
+
+4. Make mod plan.
